@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
 
   def index
+    @user = current_user
     @users = User.all
     @book = Book.new
   end
@@ -36,9 +37,7 @@ class UsersController < ApplicationController
 
   def ensure_correct_user
     @user = User.find(params[:id])
-    unless @user == current_user
-      redirect_to user_path(current_user)
-    end
+    redirect_to (user_path(current_user)) unless @user == current_user
   end
 
 end
