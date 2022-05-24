@@ -3,12 +3,13 @@ class SearchesController < ApplicationController
 
   def search
     @range = params[:range] #検索モデル
+    @word = params[:word] #検索ワード
+    @search = params[:search] #検索方法
 
-    if @range == "User"
-      @users = User.looks(params[:search], params[:word]) #検索方法、検索ワード
-      redirect_to search_path(@range)
+    if @range == "user"
+      @records = User.looks(@search, @word) #検索方法、検索ワード
     else
-      @books = Book.looks(params[:search], params[:word])
+      @records = Book.looks(@search, @word)
     end
   end
 end
