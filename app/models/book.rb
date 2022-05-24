@@ -4,18 +4,16 @@ class Book < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
 
-  #検索方法分き
+  #検索方法分岐
   def self.looks(search, word)
-    if search == "perfect_match"
-      @book = Book.where("title LIKE?", "#{word}")
-    elsif search == "forward_macth"
-      @book = Book.where("title LIKE?", "#{word}%")
-    elsif search == "backward_match"
-      @book = Book.where("title LIKE?", "%#{word}")
-    elsif search == "partial_match"
-      @book = Book.where("title LIKE?", "%#{word}%")
+    if search == "perfect"
+      Book.where("title LIKE?", "#{word}")
+    elsif search == "forward"
+      Book.where("title LIKE?", "#{word}%")
+    elsif search == "backward"
+      Book.where("title LIKE?", "%#{word}")
     else
-      @book = Book.all
+      Book.where("title LIKE?", "%#{word}%")
     end
   end
 
