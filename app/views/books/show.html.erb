@@ -19,23 +19,10 @@
           <td><%= link_to @book.title, book_path(@book) %></td>
           <td><%= @book.body %></td>
 
-          <td>
-          <% if @book.favorited_by?(current_user) %>
-          <div>
-           <%= link_to book_favorites_path(@book), method: :delete do %>
-            <i class="fa-solid fa-heart" style="color:red;">
-            <%=  @book.favorites.count %></i>
-           <% end %>
-          </div>
-           <% else %>
-          <div>
-          <%= link_to book_favorites_path(@book), method: :post do %>
-           <i class="fa-regular fa-heart"></i>
-           <%= @book.favorites.count %>
-          <% end %>
-          </div>
-          <% end %>
+          <td class = "favorite_buttons_<%= @book.id %>">
+            <%= render "favorites/favorites", book: @book %>
           </td>
+
           <td>コメント数：<%= @book.book_comments.count %></td>
 
           <% if @book.user == current_user %>
@@ -45,13 +32,14 @@
           </tr>
           </table>
 
-          <div>
-            <%= form_with(model:[@book, @book_comment], local: true) do |f| %>
-            <%= f.text_area :comment, rows:'5', placeholder: 'コメントをここに', class: 'w-100' %>
-            <%= f.submit "送信する", class: "btn btn-lg mt-20 pull-right" %>
-            <% end %>
+          <!--コメントフォーム-->
+          <div class = "new_comment">
+            <%= render 'book_comments/form', book: @book, book_comment: @book_comment %>
           </div>
+          <!--コメント一覧部分-->
+          <div id = "comments_area">
           <%= render "book_comments/index", book: @book %>
+          </div>
 
     </div>
   </div>
