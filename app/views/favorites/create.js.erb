@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 $('#favorite_buttons_<%= book.id %>').hrml("<%= j(render "favorites/favorites", book: book) %>");
+=======
+$('.favorite-<%= @favorite.book_id %>').html("<%= j(render 'favorites/btn', book: @favorite.book) %>")
+>>>>>>> topic16

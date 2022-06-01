@@ -3,15 +3,21 @@ before_action :authenticate_user!
 before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def show
-    @book = Book.new
+    #@book = Book.new
     @book = Book.find(params[:id])
     @book_comment = BookComment.new
   end
 
   def index
-    @books = Book.all
-    @book = Book.new
-    @book.user_id = current_user.id
+  to  = Time.current.at_end_of_day
+    from  = (to - 6.day).at_beginning_of_day
+    @books = Book.includes(:favorited_users).
+      sort {|a,b|
+        b.favorited_users.includes(:favorites).where(created_at: from...to).size <=>
+        a.favorited_users.includes(:favorites).where(created_at: from...to).size
+      }
+  @book = Book.new
+  @book.user_id = current_user.id
   end
 
   def create
