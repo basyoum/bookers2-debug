@@ -4,6 +4,9 @@ class Book < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
 
+  #いいね1week多い順にする
+  has_many :favorited_users, through: :favorites, source: :user
+
   #検索方法分岐
   def self.looks(search, word)
     if search == "perfect"
