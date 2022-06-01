@@ -2,10 +2,12 @@ class Book < ApplicationRecord
 
   belongs_to :user
   has_many :favorites, dependent: :destroy
-  has_many :book_comments, dependent: :destroy
-
   #いいね1week多い順にする
   has_many :favorited_users, through: :favorites, source: :user
+
+  has_many :book_comments, dependent: :destroy
+
+
 
   #検索方法分岐
   def self.looks(search, word)
