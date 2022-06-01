@@ -3,7 +3,7 @@ before_action :authenticate_user!
 before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def show
-    @book = Book.new
+    #@book = Book.new
     @book = Book.find(params[:id])
     @book_comment = BookComment.new
   end
