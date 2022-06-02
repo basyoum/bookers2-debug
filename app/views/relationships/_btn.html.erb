@@ -4,4 +4,5 @@
   <% else %>
     <%= link_to "フォローする", user_relationships_path(user.id), class: 'btn btn-success', method: :post %>
   <% end %>
+  <%= link_to 'chatを始める', chat_path(user.id) %>
  <% end %>
