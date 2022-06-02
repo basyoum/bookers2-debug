@@ -21,6 +21,10 @@ Rails.application.routes.draw do
 
   get "search" => "searches#search"
 
+  #1対1のチャット機能
+  #get 'chat/:id', to: 'chats#show', as: 'chat'
+  resources :chats, only:[:show, :create]
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
  end

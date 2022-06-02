@@ -47,6 +47,11 @@ class User < ApplicationRecord
     end
   end
 
+  #1対1のチャット機能
+  has_many :user_rooms, dependent: :destroy
+  has_many :chats, dependent: :destroy
+  has_many :rooms, through: :user_rooms
+
 
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
