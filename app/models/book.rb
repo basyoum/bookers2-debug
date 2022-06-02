@@ -23,6 +23,13 @@ class Book < ApplicationRecord
     end
   end
 
+  #本の投稿数を数える(今日.前日)
+  scope :created_today, -> {where(created_at: Time.zone.now.all_day) }
+  scope :created_yesterday, -> {where(created_at: 1.day.ago.all_day) }
+  #本の投稿数を数える(今週.先週)
+  scope :created_this_week, -> {where(created_at: Time.now.all_week(:saturday)) }
+  scope :created_before_week, ->{where(created_at: 1.week.ago.all_week)}
+
 
   validates :title,presence:true
   validates :body,presence:true,length:{maximum:200}

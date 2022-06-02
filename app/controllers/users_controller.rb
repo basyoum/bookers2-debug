@@ -6,6 +6,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @book = Book.new
+    #投稿数を数えるモデルを代入
+    #今日・前日
+    @today_book = @books.created_today
+    @yesterday_book = @books.created_yesterday
+    #今週・先週
+    @this_week_book = @books.created_this_week
+    @before_week_book = @books.created_before_week
   end
 
   def index
