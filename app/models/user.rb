@@ -51,6 +51,8 @@ class User < ApplicationRecord
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
   has_many :rooms, through: :user_rooms
+  #閲覧数を表示
+  has_many :view_counts, dependent: :destroy
 
 
   def get_profile_image
