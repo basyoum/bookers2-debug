@@ -4,8 +4,9 @@ class Book < ApplicationRecord
   has_many :favorites, dependent: :destroy
   #いいね1week多い順にする
   has_many :favorited_users, through: :favorites, source: :user
-
   has_many :book_comments, dependent: :destroy
+  #閲覧数を表示
+  has_many :view_counts, dependent: :destroy
 
 
 
