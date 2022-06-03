@@ -30,6 +30,13 @@ class Book < ApplicationRecord
   scope :created_this_week, -> {where(created_at: Time.now.all_week(:saturday)) }
   scope :created_before_week, ->{where(created_at: 1.week.ago.all_week)}
 
+  #7日分の投稿データ取得
+  scope :created_days_ago, ->(n) {where(created_at: n.days.ago.all_day)}
+  #7日分の投稿を取り出す
+  #def self.before_week_count
+    #(1..6).map {|n| created_days_ago(n).count}.reverse
+  #end
+
 
   validates :title,presence:true
   validates :body,presence:true,length:{maximum:200}
