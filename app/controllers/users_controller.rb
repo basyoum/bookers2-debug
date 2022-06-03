@@ -24,8 +24,8 @@ class UsersController < ApplicationController
       @search_book = "日付を選択してください"
     else
       create_at = params[:created_at]
-      #検索した日付でヒットした本の投稿数を定義
       @search_book = @books.where(['created_at LIKE ? ', "#{create_at}%"]).count
+      render 'search_book'
     end
   end
 
