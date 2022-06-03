@@ -13,6 +13,20 @@
       <%= render 'count_books',books: @books %>
       <%= render 'week_count_books', books: @books %>
       <%= render 'count_graph', books: @books %>
+
+      <%= form_with url: user_search_path(@user), method: :get, data: {remote:true} do |f| %>
+       <%= f.date_field :created_at %>
+       <%= f.submit '検索', class: 'btn btn-primary'  %>
+      <% end %>
+
+      <div id="search_result">
+       <% if @search_book.present? %>
+        <%= render 'search', search_book: @search_book %>
+       <% end %>
+      </div>
+
+
+
     </div>
   </div>
 </div>
