@@ -19,3 +19,7 @@ ActiveStorage.start()
 
 //= require jquery
 //= require rails-ujs
+
+import Chart from 'chart.js/auto';
+
+global.Chart = Chart;

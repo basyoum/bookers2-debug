@@ -56,3 +56,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 # JQureryの読み込み
 gem 'jquery-rails'
+
+#gem "chartkick"
+#gem 'chart-js-rails', '~> 0.1.4'
