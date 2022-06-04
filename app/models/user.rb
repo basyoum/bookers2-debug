@@ -17,7 +17,7 @@ class User < ApplicationRecord
   has_many :view_counts, dependent: :destroy
 
   #グループ機能の作成
-  has_many :group_users
+  has_many :group_users, dependent: :destroy
 
 
   #自分がフォローされる(被フォロー)側の関係性
