@@ -9,6 +9,16 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
 
+  #1対1のチャット機能
+  has_many :user_rooms, dependent: :destroy
+  has_many :chats, dependent: :destroy
+  has_many :rooms, through: :user_rooms
+  #閲覧数を表示
+  has_many :view_counts, dependent: :destroy
+
+  #グループ機能の作成
+  has_many :group_users
+
 
   #自分がフォローされる(被フォロー)側の関係性
   has_many :reverse_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
@@ -46,14 +56,6 @@ class User < ApplicationRecord
       User.where("name LIKE?", "%#{word}%")
     end
   end
-
-  #1対1のチャット機能
-  has_many :user_rooms, dependent: :destroy
-  has_many :chats, dependent: :destroy
-  has_many :rooms, through: :user_rooms
-  #閲覧数を表示
-  has_many :view_counts, dependent: :destroy
-
 
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
