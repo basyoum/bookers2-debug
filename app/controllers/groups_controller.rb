@@ -14,13 +14,13 @@ class GroupsController < ApplicationController
   end
 
   #グループに参加
-  def join
-    @users = User.all
-    @group = Group.find(params[:group_id])
+  #def join
+    #@users = User.all
+    #@group = Group.find(params[:group_id])
     # @group.usersにcurrent_userを追加するという意味
-    @group.users << current_user
-    redirect_to groups_path
-  end
+    #@group.users << current_user
+    #redirect_to groups_path
+  #end
 
   def new
     @group = Group.new
@@ -31,7 +31,7 @@ class GroupsController < ApplicationController
     @group.owner_id = current_user.id
     # @group.usersにcurrent_userを追加するという意味
     # グループ作成者をメンバーに入れる
-    @group.users << current_user
+    #@group.users << current_user
     if @group.save
       redirect_to groups_path
     else
@@ -51,12 +51,12 @@ class GroupsController < ApplicationController
   end
 
   #グループから退会
-  def destroy
-    @group = Group.find(params[:id])
+  #def destroy
+    #@group = Group.find(params[:id])
     # current_userは@group.usersから消されるという意味
-    @group.users.delete(current_user)
-    redirect_to groups_path
-  end
+    #@group.users.delete(current_user)
+    #redirect_to groups_path
+  #end
 
   private
 
