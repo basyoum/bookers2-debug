@@ -25,7 +25,9 @@ Rails.application.routes.draw do
   #get 'chat/:id', to: 'chats#show', as: 'chat'
   resources :chats, only:[:show, :create]
   #グループ機能の作成
-  resources :groups, only: [:index, :show, :create, :update, :new, :edit]
+  resources :groups, only: [:index, :show, :create, :update, :new, :edit, :destroy] do
+    get "join" => "groups#join"
+  end
 
 
 
