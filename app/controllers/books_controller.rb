@@ -71,7 +71,7 @@ before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   private
 
   def book_params
-    params.require(:book).permit(:title, :body)
+    params.require(:book).permit(:title, :body, :rate)
   end
 
   def ensure_correct_user
