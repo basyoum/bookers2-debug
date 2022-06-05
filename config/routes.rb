@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   #グループ機能の作成
   resources :groups, only: [:index, :show, :create, :update, :new, :edit] do
     resource :group_users, only: [:create, :destroy]
+    resources :event_notices, only: [:new, :create]
+    get "event_notices" => "event_notices#sent"
   end
 
 
