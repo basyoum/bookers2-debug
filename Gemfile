@@ -59,3 +59,6 @@ gem 'jquery-rails'
 
 #gem "chartkick"
 #gem 'chart-js-rails', '~> 0.1.4'
+
+#環境変数化
+gem 'dotenv-rails'
