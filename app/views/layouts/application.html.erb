@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%#CDNを使ったchart.jsの導入 %>
+    <%#
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js" integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    %>
   </head>
   <body>
     <%= render 'layouts/header' %>
@@ -14,6 +18,9 @@
         <p id="notice"><%= notice %></p>
         <div class = "d-flex justify-content-center mb-2 ">
          <%= render 'searches/form' %>
+        </div>
+        <div class = "d-flex justify-content-center mb-2 ">
+          <%= render 'searches/tag_form' %>
         </div>
       <%= yield %>
        </main>

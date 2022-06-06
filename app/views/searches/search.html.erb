@@ -1,9 +1,9 @@
 <script src="https://kit.fontawesome.com/b4084b3cf0.js" crossorigin="anonymous"></script>
 
 <% if @range == 'user' %>
- <h3>Users search for "<%= @search %> "</h3>
+ <h3>Users search for "<%= @word %> "</h3>
   <%= render 'users/index', users: @records %>
-<% elsif @range == 'book' %>
- <h3>Boks search for "<%= @search %>"</h3>
+<% elsif @range == 'book' || @range == 'tag' %>
+ <h3>Books search for "<%= @word %>"</h3>
   <%= render 'books/index', books: @records %>
 <% end %>
