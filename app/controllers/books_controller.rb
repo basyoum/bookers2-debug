@@ -23,6 +23,7 @@ before_action :ensure_correct_user, only: [:edit, :update, :destroy]
    }
   @book = Book.new
   @book.user_id = current_user.id
+  @books = Book.all.order(params[:sort])
   #閲覧数を表示
     #@book_detail = Book.find(params[:id])
     #unless ViewCount.find_by(user_id: current_user.id, book_id: @book_detail.id)

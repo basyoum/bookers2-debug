@@ -37,6 +37,10 @@ class Book < ApplicationRecord
     #(1..6).map {|n| created_days_ago(n).count}.reverse
   #end
 
+  #scopeメソッドでカラムの取り出し方の記述(新着順と評価の高い順)
+  #scope :latest, -> {order(created_at: :desc)}
+  #scope :rate_count, -> {order(rate: :desc)}
+
 
   validates :title,presence:true
   validates :body,presence:true,length:{maximum:200}
