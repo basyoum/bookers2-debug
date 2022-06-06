@@ -8,8 +8,10 @@ class SearchesController < ApplicationController
 
     if @range == "user"
       @records = User.looks(@search, @word) #検索方法、検索ワード
-    else
+    elsif @range == "book"
       @records = Book.looks(@search, @word)
+    elsif @range == "tag"
+      @records = Tag.search_books_for(@search, @word)
     end
   end
 end

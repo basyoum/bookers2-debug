@@ -31,17 +31,22 @@ before_action :ensure_correct_user, only: [:edit, :update, :destroy]
     #end
   end
 
+
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
+    #投稿にタグを追加
+    tag_list = params[:book][:tag_name].split(',')
     if @book.save
+      @book.save_tags(tag_list)
       flash[:notice] = "You have created book successfully."
-    redirect_to book_path(@book)
+      redirect_to book_path(@book)
     else
       @books = Book.all
       render :index
     end
   end
+
 
   def edit
     #@book = Book.find(params[:id])
